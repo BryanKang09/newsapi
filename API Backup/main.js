@@ -4,8 +4,7 @@ const menus = document.querySelectorAll(".menus button")
 menus.forEach(menu=>
     menu.addEventListener("click",(event)=> getNewsByCategory(event)))
 let url = new URL(
-    // `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
-    `http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines`
+    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
 );
 let totalResults = 0
 let page =1
@@ -42,8 +41,7 @@ const getNews =async () =>{
 
 const getLastestNews = async () => {
     url = new URL(
-        // `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
-        `http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines`
+        `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
     );
     getNews()
 }
@@ -52,20 +50,16 @@ const getNewsByCategory = async (event) => {
     const category = event.target.textContent.toLowerCase();
     console.log(category)
     url = new URL(
-        // `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`
-        `http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines?category=${category}`
+        `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`
     );
     getNews()
 };
 
 const getNewsByKeyword=async() => {
     const keyword = document.getElementById("search-input").value;
-    console.log(keyword);
-    url = new URL(
-        // `https://newsapi.org/v2/top-headlines?country=us&q=${keyword}&apiKey=${API_KEY}`
-        `http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines?q=${keyword}`
-        );
-    getNews();   
+    console.log(keyword)
+    url = new URL(`https://newsapi.org/v2/top-headlines?country=us&Q=${keyword}&apiKey=${API_KEY}`)
+    getNews()   
 };
 
 const render=()=>{
